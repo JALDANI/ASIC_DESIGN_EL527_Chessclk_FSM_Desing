@@ -1,0 +1,846 @@
+Qflow synthesis logfile created on Tuesday 08 April 2025 07:17:38 PM IST
+Running yosys for verilog parsing and synthesis
+yosys  -s chessclkfsm.ys
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2019  Clifford Wolf <clifford@clifford.at>           |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9 (git sha1 1979e0b)
+
+
+-- Executing script file `chessclkfsm.ys' --
+
+1. Executing Liberty frontend.
+Imported 32 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /home/manoj/vsdflow/source/chessclkfsm.v
+Parsing Verilog input from `/home/manoj/vsdflow/source/chessclkfsm.v' to AST representation.
+Generating RTLIL representation for module `\chessclkfsm'.
+Successfully finished Verilog frontend.
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \chessclkfsm
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \chessclkfsm
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 7 switch rules as full_case in process $proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1 in module chessclkfsm.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_INIT pass (extract init attributes).
+
+3.2.4. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\chessclkfsm.$proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1'.
+
+3.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\chessclkfsm.$proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1'.
+     1/1: $0\state[1:0]
+
+3.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.2.7. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\chessclkfsm.\state' using process `\chessclkfsm.$proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1'.
+  created $adff cell `$procdff$31' with positive edge clock and positive level reset.
+
+3.2.8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 6 empty switches in `\chessclkfsm.$proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1'.
+Removing empty process `chessclkfsm.$proc$/home/manoj/vsdflow/source/chessclkfsm.v:9$1'.
+Cleaned up 6 empty switches.
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+<suppressed ~6 debug messages>
+
+3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+3.5. Executing CHECK pass (checking for obvious problems).
+checking module chessclkfsm..
+found and reported 0 problems.
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+<suppressed ~21 debug messages>
+Removed a total of 7 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 0 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.6.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.6.9. Finished OPT passes. (There is nothing left to do.)
+
+3.7. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell chessclkfsm.$eq$/home/manoj/vsdflow/source/chessclkfsm.v:46$5 ($eq).
+Removed top 1 bits (of 2) from mux cell chessclkfsm.$procmux$8 ($mux).
+Removed top 1 bits (of 2) from port B of cell chessclkfsm.$procmux$18_CMP0 ($eq).
+Removed top 1 bits (of 2) from wire chessclkfsm.$procmux$8_Y.
+
+3.8. Executing PEEPOPT pass (run peephole optimizers).
+
+3.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.10. Executing TECHMAP pass (map to technology primitives).
+
+3.10.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/usr/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+3.10.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~68 debug messages>
+
+3.11. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module chessclkfsm:
+  created 0 $alu and 0 $macc cells.
+
+3.12. Executing SHARE pass (SAT-based resource sharing).
+
+3.13. Executing OPT pass (performing simple optimizations).
+
+3.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+3.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 0 changes.
+
+3.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.13.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.13.9. Finished OPT passes. (There is nothing left to do.)
+
+3.14. Executing FSM pass (extract and optimize FSM).
+
+3.14.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register chessclkfsm.state.
+
+3.14.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\chessclkfsm'.
+  found $adff cell for state register: $procdff$31
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'10 (from async reset)
+  found ctrl input: $procmux$14_CMP
+  found ctrl input: \Clr
+  found ctrl input: \Tb
+  found ctrl input: \Ta
+  found ctrl input: $eq$/home/manoj/vsdflow/source/chessclkfsm.v:35$2_Y
+  found ctrl input: \Pa
+  found state code: 2'00
+  found state code: 2'01
+  found state code: 2'11
+  found ctrl input: $procmux$16_CMP
+  found ctrl input: $procmux$17_CMP
+  found ctrl input: $procmux$18_CMP
+  found ctrl input: $procmux$19_CMP
+  found ctrl input: $procmux$24_CMP
+  found ctrl input: $procmux$29_CMP
+  found ctrl output: $procmux$14_CMP
+  found ctrl output: \Ta
+  found ctrl output: \Tb
+  found ctrl output: \Clr
+  ctrl inputs: { $procmux$29_CMP $procmux$24_CMP $procmux$19_CMP $procmux$18_CMP $procmux$17_CMP $procmux$16_CMP $eq$/home/manoj/vsdflow/source/chessclkfsm.v:35$2_Y \Pa }
+  ctrl outputs: { $procmux$14_CMP $0\state[1:0] \Ta \Clr \Tb }
+  transition:       2'00 8'0---00-- -> INVALID_STATE(2'xx) 6'0xx100  <ignored invalid transition!>
+  transition:       2'00 8'1------- ->       2'00 6'000100
+  transition:       2'00 8'----1--- ->       2'01 6'001100
+  transition:       2'00 8'-----1-- ->       2'11 6'011100
+  transition:       2'10 8'--0000-- -> INVALID_STATE(2'xx) 6'0xx010  <ignored invalid transition!>
+  transition:       2'10 8'--1----- ->       2'10 6'010010
+  transition:       2'10 8'---1---- ->       2'00 6'000010
+  transition:       2'10 8'----1--- ->       2'01 6'001010
+  transition:       2'10 8'-----1-- ->       2'11 6'011010
+  transition:       2'01 8'-0-0-0-- -> INVALID_STATE(2'xx) 6'0xx001  <ignored invalid transition!>
+  transition:       2'01 8'-1------ ->       2'01 6'001001
+  transition:       2'01 8'---1---- ->       2'00 6'000001
+  transition:       2'01 8'-----1-- ->       2'11 6'011001
+  transition:       2'11 8'------00 ->       2'00 6'100000
+  transition:       2'11 8'------01 ->       2'01 6'101000
+  transition:       2'11 8'------1- ->       2'11 6'111000
+
+3.14.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$33' from module `\chessclkfsm'.
+
+3.14.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 11 unused cells and 11 unused wires.
+<suppressed ~12 debug messages>
+
+3.14.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$33' from module `\chessclkfsm'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+  Removing unused output signal $procmux$14_CMP.
+
+3.14.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$33' from module `\chessclkfsm' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1-
+  10 -> ---1
+  01 -> -1--
+  11 -> 1---
+
+3.14.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$33' from module `\chessclkfsm':
+-------------------------------------
+
+  Information on FSM $fsm$\state$33 (\state):
+
+  Number of input signals:    8
+  Number of output signals:   3
+  Number of state bits:       4
+
+  Input signals:
+    0: \Pa
+    1: $eq$/home/manoj/vsdflow/source/chessclkfsm.v:35$2_Y
+    2: $procmux$16_CMP
+    3: $procmux$17_CMP
+    4: $procmux$18_CMP
+    5: $procmux$19_CMP
+    6: $procmux$24_CMP
+    7: $procmux$29_CMP
+
+  Output signals:
+    0: \Tb
+    1: \Clr
+    2: \Ta
+
+  State encoding:
+    0:     4'--1-
+    1:     4'---1  <RESET STATE>
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 8'1-------   ->     0 3'100
+      1:     0 8'----1---   ->     2 3'100
+      2:     0 8'-----1--   ->     3 3'100
+      3:     1 8'---1----   ->     0 3'010
+      4:     1 8'--1-----   ->     1 3'010
+      5:     1 8'----1---   ->     2 3'010
+      6:     1 8'-----1--   ->     3 3'010
+      7:     2 8'---1----   ->     0 3'001
+      8:     2 8'-1------   ->     2 3'001
+      9:     2 8'-----1--   ->     3 3'001
+     10:     3 8'------00   ->     0 3'000
+     11:     3 8'------01   ->     2 3'000
+     12:     3 8'------1-   ->     3 3'000
+
+-------------------------------------
+
+3.14.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$33' from module `\chessclkfsm'.
+
+3.15. Executing OPT pass (performing simple optimizations).
+
+3.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+<suppressed ~8 debug messages>
+
+3.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.15.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.15.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 11 unused wires.
+<suppressed ~1 debug messages>
+
+3.15.5. Finished fast OPT passes.
+
+3.16. Executing MEMORY pass.
+
+3.16.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
+
+3.16.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.16.3. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+3.16.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.16.5. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.18. Executing OPT pass (performing simple optimizations).
+
+3.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.18.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.18.5. Finished fast OPT passes.
+
+3.19. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+
+3.20. Executing OPT pass (performing simple optimizations).
+
+3.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+3.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$87: { $auto$fsm_map.cc:118:implement_pattern_cache$79 $auto$fsm_map.cc:118:implement_pattern_cache$85 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$76: { $auto$fsm_map.cc:118:implement_pattern_cache$64 $auto$fsm_map.cc:118:implement_pattern_cache$70 $auto$fsm_map.cc:118:implement_pattern_cache$74 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:144:implement_pattern_cache$57: { $auto$fsm_map.cc:118:implement_pattern_cache$55 $auto$fsm_map.cc:118:implement_pattern_cache$45 $auto$fsm_map.cc:118:implement_pattern_cache$51 }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:105:implement_pattern_cache$84: { \state [0] \state [1] \state [2] }
+    New input vector for $reduce_or cell $auto$fsm_map.cc:105:implement_pattern_cache$50: { \state [0] \state [2] }
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 5 changes.
+
+3.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.20.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.20.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.20.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.20.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.20.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+3.20.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 0 changes.
+
+3.20.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+3.20.13. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.20.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+
+3.20.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.20.16. Finished OPT passes. (There is nothing left to do.)
+
+3.21. Executing TECHMAP pass (map to technology primitives).
+
+3.21.1. Executing Verilog-2005 frontend: <techmap.v>
+Parsing Verilog input from `<techmap.v>' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+3.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $adff.
+No more expansions possible.
+<suppressed ~25 debug messages>
+
+3.22. Executing OPT pass (performing simple optimizations).
+
+3.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+<suppressed ~3 debug messages>
+
+3.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+3.22.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 13 unused wires.
+<suppressed ~1 debug messages>
+
+3.22.5. Finished fast OPT passes.
+
+3.23. Executing ABC pass (technology mapping using ABC).
+
+3.23.1. Extracting gate netlist of module `\chessclkfsm' to `<abc-temp-dir>/input.blif'..
+Extracted 36 gates and 43 wires to a netlist network with 6 inputs and 4 outputs.
+
+3.23.1.1. Executing ABC.
+Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 17 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + retime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+3.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:        1
+ABC RESULTS:            ANDNOT cells:        5
+ABC RESULTS:              AOI3 cells:        1
+ABC RESULTS:              AOI4 cells:        1
+ABC RESULTS:              NAND cells:        1
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:              OAI3 cells:        3
+ABC RESULTS:                OR cells:        5
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:        internal signals:       33
+ABC RESULTS:           input signals:        6
+ABC RESULTS:          output signals:        4
+Removing temp directory.
+
+3.24. Executing OPT pass (performing simple optimizations).
+
+3.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+3.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+3.24.3. Executing OPT_RMDFF pass (remove dff with constant values).
+
+3.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 41 unused wires.
+<suppressed ~1 debug messages>
+
+3.24.5. Finished fast OPT passes.
+
+3.25. Executing HIERARCHY pass (managing design hierarchy).
+
+3.25.1. Analyzing design hierarchy..
+Top module:  \chessclkfsm
+
+3.25.2. Analyzing design hierarchy..
+Top module:  \chessclkfsm
+Removed 0 unused modules.
+
+3.26. Printing statistics.
+
+=== chessclkfsm ===
+
+   Number of wires:                 27
+   Number of wire bits:             30
+   Number of public wires:           8
+   Number of public wire bits:      11
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 23
+     $_ANDNOT_                       4
+     $_AND_                          1
+     $_AOI3_                         1
+     $_AOI4_                         1
+     $_DFF_PP0_                      3
+     $_DFF_PP1_                      1
+     $_NAND_                         1
+     $_NOT_                          1
+     $_OAI3_                         3
+     $_ORNOT_                        2
+     $_OR_                           5
+
+3.27. Executing CHECK pass (checking for obvious problems).
+checking module chessclkfsm..
+found and reported 0 problems.
+
+4. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell DFFNEGX1 (noninv, pins=3, area=96.00) is a direct match for cell type $_DFF_N_.
+  cell DFFPOSX1 (noninv, pins=3, area=96.00) is a direct match for cell type $_DFF_P_.
+  cell DFFSR (noninv, pins=5, area=176.00) is a direct match for cell type $_DFFSR_PNN_.
+  create mapping for $_DFFSR_PPN_ from mapping for $_DFFSR_PNN_.
+  create mapping for $_DFFSR_PNP_ from mapping for $_DFFSR_PNN_.
+  create mapping for $_DFFSR_PPP_ from mapping for $_DFFSR_PNP_.
+  create mapping for $_DFFSR_NNN_ from mapping for $_DFFSR_PNN_.
+  create mapping for $_DFFSR_NPN_ from mapping for $_DFFSR_NNN_.
+  create mapping for $_DFFSR_NNP_ from mapping for $_DFFSR_NNN_.
+  create mapping for $_DFFSR_NPP_ from mapping for $_DFFSR_NNP_.
+  create mapping for $_DFF_NN0_ from mapping for $_DFFSR_NNN_.
+  create mapping for $_DFF_NN1_ from mapping for $_DFFSR_NNN_.
+  create mapping for $_DFF_NP0_ from mapping for $_DFFSR_NPP_.
+  create mapping for $_DFF_NP1_ from mapping for $_DFFSR_NPP_.
+  create mapping for $_DFF_PN0_ from mapping for $_DFFSR_PNN_.
+  create mapping for $_DFF_PN1_ from mapping for $_DFFSR_PNN_.
+  create mapping for $_DFF_PP0_ from mapping for $_DFFSR_PPP_.
+  create mapping for $_DFF_PP1_ from mapping for $_DFFSR_PPP_.
+  final dff cell mappings:
+    DFFNEGX1 _DFF_N_ (.CLK( C), .D( D), .Q( Q));
+    DFFPOSX1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    DFFSR _DFF_NN0_ (.CLK(~C), .D( D), .Q( Q), .R( R), .S( 1));
+    DFFSR _DFF_NN1_ (.CLK(~C), .D( D), .Q( Q), .R( 1), .S( R));
+    DFFSR _DFF_NP0_ (.CLK(~C), .D( D), .Q( Q), .R(~R), .S( 1));
+    DFFSR _DFF_NP1_ (.CLK(~C), .D( D), .Q( Q), .R( 1), .S(~R));
+    DFFSR _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .R( R), .S( 1));
+    DFFSR _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .R( 1), .S( R));
+    DFFSR _DFF_PP0_ (.CLK( C), .D( D), .Q( Q), .R(~R), .S( 1));
+    DFFSR _DFF_PP1_ (.CLK( C), .D( D), .Q( Q), .R( 1), .S(~R));
+    DFFSR _DFFSR_NNN_ (.CLK(~C), .D( D), .Q( Q), .R( R), .S( S));
+    DFFSR _DFFSR_NNP_ (.CLK(~C), .D( D), .Q( Q), .R(~R), .S( S));
+    DFFSR _DFFSR_NPN_ (.CLK(~C), .D( D), .Q( Q), .R( R), .S(~S));
+    DFFSR _DFFSR_NPP_ (.CLK(~C), .D( D), .Q( Q), .R(~R), .S(~S));
+    DFFSR _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .R( R), .S( S));
+    DFFSR _DFFSR_PNP_ (.CLK( C), .D( D), .Q( Q), .R(~R), .S( S));
+    DFFSR _DFFSR_PPN_ (.CLK( C), .D( D), .Q( Q), .R( R), .S(~S));
+    DFFSR _DFFSR_PPP_ (.CLK( C), .D( D), .Q( Q), .R(~R), .S(~S));
+Mapping DFF cells in module `\chessclkfsm':
+  mapped 3 $_DFF_PP0_ cells to \DFFSR cells.
+  mapped 1 $_DFF_PP1_ cells to \DFFSR cells.
+
+5. Executing OPT pass (performing simple optimizations).
+
+5.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+5.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 0 changes.
+
+5.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+5.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+5.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+5.9. Finished OPT passes. (There is nothing left to do.)
+
+6. Executing ABC pass (technology mapping using ABC).
+
+6.1. Extracting gate netlist of module `\chessclkfsm' to `<abc-temp-dir>/input.blif'..
+Extracted 20 gates and 27 wires to a netlist network with 7 inputs and 5 outputs.
+
+6.1.1. Executing ABC.
+Running ABC command: /usr/local/share/qflow/bin/yosys-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.00 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFNEGX1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFPOSX1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFSR".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "LATCH".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUFX1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "TBUFX2".
+ABC: Library "osu018_stdcells" from "/usr/local/share/qflow/tech/osu018/osu018_stdcells.lib" has 26 cells (6 skipped: 4 seq; 2 tri-state; 0 no func; 0 dont_use).  Time =     0.00 sec
+ABC: Memory =    0.36 MB. Time =     0.00 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "FAX1").
+ABC: + strash 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + ifraig 
+ABC: + retime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + map -M 1 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.1.2. Re-integrating ABC results.
+ABC RESULTS:             INVX1 cells:        3
+ABC RESULTS:           NAND2X1 cells:        6
+ABC RESULTS:            NOR2X1 cells:        2
+ABC RESULTS:            NOR3X1 cells:        3
+ABC RESULTS:           OAI21X1 cells:        3
+ABC RESULTS:           OAI22X1 cells:        1
+ABC RESULTS:        internal signals:       15
+ABC RESULTS:           input signals:        7
+ABC RESULTS:          output signals:        5
+Removing temp directory.
+
+7. Executing FLATTEN pass (flatten design).
+No more expansions possible.
+
+8. Executing SETUNDEF pass (replace undef values with defined constants).
+Removed 0 unused cells and 27 unused wires.
+
+9. Executing IOPADMAP pass (mapping inputs/outputs to IO-PAD cells).
+Mapping port chessclkfsm.Clr using BUFX2.
+Don't map input port chessclkfsm.Pa: Missing option -inpad.
+Don't map input port chessclkfsm.Pb: Missing option -inpad.
+Mapping port chessclkfsm.Ta using BUFX2.
+Mapping port chessclkfsm.Tb using BUFX2.
+Don't map input port chessclkfsm.clock: Missing option -inpad.
+Don't map input port chessclkfsm.reset: Missing option -inpad.
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \chessclkfsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \chessclkfsm.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\chessclkfsm'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_RMDFF pass (remove dff with constant values).
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \chessclkfsm..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module chessclkfsm.
+
+10.9. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing BLIF backend.
+
+12. Printing statistics.
+
+=== chessclkfsm ===
+
+   Number of wires:                 26
+   Number of wire bits:             29
+   Number of public wires:          26
+   Number of public wire bits:      29
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 25
+     BUFX2                           3
+     DFFSR                           4
+     INVX1                           3
+     NAND2X1                         6
+     NOR2X1                          2
+     NOR3X1                          3
+     OAI21X1                         3
+     OAI22X1                         1
+
+End of script. Logfile hash: 790036e544
+CPU: user 0.07s system 0.00s, MEM: 16.37 MB total, 11.05 MB resident
+Yosys 0.9 (git sha1 1979e0b)
+Time spent: 17% 1x share (0 sec), 13% 16x opt_clean (0 sec), ...
+Running getpowerground to determine power and ground net names.
+getpowerground.tcl  /usr/local/share/qflow/tech/osu018/osu018_stdcells.lef
+Cleaning up output syntax
+ypostproc.tcl chessclkfsm_mapped.blif chessclkfsm /usr/local/share/qflow/tech/osu018/osu018.sh vdd gnd 
+Cleaning up blif file syntax
+Running blifFanout (iterative)
+Each iteration calls:
+blifFanout -l 100 -c 20 -I chessclkfsm_nofanout -s nullstring -p /usr/local/share/qflow/tech/osu018/osu018_stdcells.lib -b BUFX2,CLKBUF1 -i A,A -o Y,Y tmp.blif chessclkfsm.blif
+
+blifFanout for qflow 1.3.17
+Parsing library "osu018_stdcells"
+End of library at line 6141
+Lib Read:  Processed 6142 lines.
+Top internal fanout is 5 (load 186.673) from node state[0],
+driven by DFFSR with strength 59.5664 (fF driven at latency 100)
+Top fanout load-to-strength ratio is 3.13386 (latency = 313.386 ps)
+Top input node fanout is 5 (load 63.1632) from node Pb.
+Warning 1: load of 196.673 is 3.30174 times greater than strongest gate DFFSR
+This warning will only be repeated for larger overload ratios.  Warning count reflects
+the total number of overloaded nets.
+4 gates exceed specified minimum load.
+0 buffers were added.
+3 gates were changed.
+
+Gate counts by drive strength:
+
+	"" gates	In: 4    	Out: 4    	+0
+	"1" gates	In: 18    	Out: 15    	-3
+	"2" gates	In: 3    	Out: 5    	+2
+
+Number of gates changed: 3
+gates resized: 3
+blifFanout for qflow 1.3.17
+Parsing library "osu018_stdcells"
+End of library at line 6141
+Lib Read:  Processed 6142 lines.
+Top internal fanout is 5 (load 186.673) from node state[0],
+driven by DFFSR with strength 59.5664 (fF driven at latency 100)
+Top fanout load-to-strength ratio is 3.13386 (latency = 313.386 ps)
+Top input node fanout is 5 (load 72.4953) from node Pb.
+Warning 1: load of 196.673 is 3.30174 times greater than strongest gate DFFSR
+This warning will only be repeated for larger overload ratios.  Warning count reflects
+the total number of overloaded nets.
+4 gates exceed specified minimum load.
+0 buffers were added.
+0 gates were changed.
+
+Gate counts by drive strength:
+
+	"" gates	In: 4    	Out: 4    	+0
+	"1" gates	In: 15    	Out: 15    	+0
+	"2" gates	In: 5    	Out: 5    	+0
+	"4" gates	In: 1    	Out: 1    	+0
+
+Number of gates changed: 0
+gates resized: 0
+
+Generating RTL verilog and SPICE netlist file in directory
+	 /home/manoj/vsdflow/synthesis
+Files:
+   Verilog: /home/manoj/vsdflow/synthesis/chessclkfsm.rtl.v
+   Verilog: /home/manoj/vsdflow/synthesis/chessclkfsm.rtlnopwr.v
+   Verilog: /home/manoj/vsdflow/synthesis/chessclkfsm.rtlbb.v
+   Spice:   /home/manoj/vsdflow/synthesis/chessclkfsm.spc
+
+Running blif2Verilog.
+Running blif2BSpice.
+Running spi2xspice.py
+spi2xspice.py "/usr/local/share/qflow/tech/osu018/osu018_stdcells.lib" -io_time=1n -time=100p -idelay=10p -odelay=100p -cload=500f chessclkfsm.spc chessclkfsm.xspice
+
+Synthesis script ended on Tuesday 08 April 2025 07:17:38 PM IST
